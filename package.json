@@ -1,0 +1,16 @@
+{
+  "name": "tron-transaction-downloader",
+  "version": "0.1.0",
+  "description": "Node.js script to download all transactions for an account using TronGrid and write them to a CSV file",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/ColonelJ/tron-transaction-downloader.git",
+  "author": "Jason Raymond Bell <jason@epixxware.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "trongrid": "^1.2.1",
+    "tronweb": "^2.6.8"
+  }
+}
