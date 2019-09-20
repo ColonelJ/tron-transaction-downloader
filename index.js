@@ -54,4 +54,7 @@ async function main() {
     }
 }
 
-main()
+main().catch(function (err) {
+    console.error(err);
+    process.exit(1);
+});
