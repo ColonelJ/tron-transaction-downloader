@@ -20,7 +20,9 @@ const tronWeb = new TronWeb({
 const tronGrid = new TronGrid(tronWeb);
 
 async function processTransaction(tx) {
-    await csvFile.write((tx.txID || '') + ',' + ((tx.ret.length > 0 ? tx.ret[0].code : '') || '') + ',' + (tx.raw_data.timestamp || '') + ',' + (tx.raw_data.contract[0].type || '') + ',' + (tronWeb.address.fromHex(tx.raw_data.contract[0].parameter.value.owner_address) || '') + ',' + (tronWeb.address.fromHex(tx.raw_data.contract[0].parameter.value.to_address) || '') + ',' + (tx.raw_data.contract[0].parameter.value.amount || '') + ',' + (tx.raw_data.contract[0].parameter.value.asset_name || '') + '\n');
+    if (!tx.internal_tx_id) {
+        await csvFile.write((tx.txID || '') + ',' + ((tx.ret.length > 0 ? tx.ret[0].code : '') || '') + ',' + (tx.block_timestamp ? tx.block_timestamp + ' [' + new Date(tx.block_timestamp) + ']' : '') + ',' + (tx.raw_data.contract[0].type || '') + ',' + (tronWeb.address.fromHex(tx.raw_data.contract[0].parameter.value.owner_address) || '') + ',' + (tronWeb.address.fromHex(tx.raw_data.contract[0].parameter.value.to_address) || '') + ',' + (tx.raw_data.contract[0].parameter.value.amount || '') + ',' + (tx.raw_data.contract[0].parameter.value.asset_name || '') + '\n');
+    }
 }
 
 async function main() {
