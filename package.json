@@ -1,6 +1,6 @@
 {
   "name": "tron-transaction-downloader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js script to download all transactions for an account using TronGrid and write them to a CSV file",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,8 @@
   "dependencies": {
     "trongrid": "^1.2.1",
     "tronweb": "^2.6.8"
+  },
+  "resolutions": {
+    "elliptic": "^6.5.3"
   }
 }
