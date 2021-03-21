@@ -50,7 +50,8 @@ async function downloadAllTransactions(url) {
   let page_txs = response.data;
   let txs = page_txs;
   if (!txs.length) {
-    throw new Error(`No transactions found for address ${address}`);
+    console.error(`No transactions found for address ${address}`);
+    return txs;
   }
   while (page_txs.length === limit) {
     let i = page_txs.length - 1;
@@ -79,7 +80,7 @@ async function downloadAllTransactions(url) {
     }
     txs = txs.concat(page_txs.slice(txs_from_last_page.length));
   }
-  console.log('Downloading completed!');
+  console.log(`Downloading completed! (Got ${txs.length} transactions)`);
   return txs;
 }
 
