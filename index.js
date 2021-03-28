@@ -268,6 +268,7 @@ async function main() {
       `accounts/${address}/transactions`
     );
     const external_txs = txs.filter(tx => !tx.internal_tx_id);
+    console.log(`Processing ${external_txs.length} non-internal transactions`);
     await csvFile.write(stringify(await mapAsync(external_txs, process_tx)));
   } finally {
     if (csvFile !== undefined) {
